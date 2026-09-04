@@ -1,12 +1,6 @@
-# app.py — la parte visual: convierte el motor en una página web con
-# formulario, en vez de tener que escribir los datos adentro del código.
-
 import os
 import streamlit as st
 
-# En Streamlit Cloud la key se configura en Settings → Secrets (ahí no hay
-# archivo .env), así que la copiamos a una variable de entorno para que
-# motor.py la encuentre igual que en tu compu.
 if "GROQ_API_KEY" in st.secrets:
     os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
@@ -20,8 +14,6 @@ st.write(
     "propuesta armada con IA: distribución, muebles, colores y más."
 )
 
-# st.form agrupa todas las preguntas: la IA recién se llama una vez,
-# cuando apretás el botón — no en cada tecla que tocás.
 with st.form("formulario"):
     tipo_ambiente = st.selectbox("Tipo de ambiente", ["Habitación", "Living", "Cocina", "Oficina", "Comedor"])
     dimensiones = st.number_input("Dimensiones (m²)", min_value=1, value=12)
